@@ -42,36 +42,45 @@ class _OneAnswerQuizPageState extends State<OneAnswerQuizPage> {
                   child: Text('Loading...'),
                 )
               : _index < providerData.workList.length
-                  ? Column(
-                      children: <Widget>[
-                        Text(providerData.workList[_index].question),
-                        Expanded(
-                          child: ListView.separated(
-                            separatorBuilder:
-                                (BuildContext context, int index) =>
-                                    const Divider(),
-                            padding: const EdgeInsets.all(8),
-                            itemCount:
-                                providerData.workList[_index].answers.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return RaisedButton(
-                                child: Text(providerData
-                                    .workList[_index].answers[index]),
-                                onPressed: () {
-                                  _checkAnswer(
-                                      providerData
-                                          .workList[_index].answers[index],
-                                      providerData
-                                          .workList[_index].rightAnswer);
-                                  setState(() {
-                                    _index++;
-                                  });
+                  ? Center(
+                      child: Container(
+                        height: 500,
+                        width: 500,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              providerData.workList[_index].question,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Expanded(
+                              child: ListView.separated(
+                                separatorBuilder:
+                                    (BuildContext context, int index) =>
+                                        const Divider(),
+                                padding: const EdgeInsets.all(8),
+                                itemCount: providerData
+                                    .workList[_index].answers.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return RaisedButton(
+                                    child: Text(providerData
+                                        .workList[_index].answers[index]),
+                                    onPressed: () {
+                                      _checkAnswer(
+                                          providerData
+                                              .workList[_index].answers[index],
+                                          providerData
+                                              .workList[_index].rightAnswer);
+                                      setState(() {
+                                        _index++;
+                                      });
+                                    },
+                                  );
                                 },
-                              );
-                            },
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     )
                   : ResultPage(_score),
         ),
