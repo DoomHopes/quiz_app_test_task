@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App',
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       routes: {
         '/home': (context) => HomePage(),
