@@ -9,22 +9,26 @@ class HomePage extends StatelessWidget {
         title: Text('Quiz App'),
       ),
       body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            RaisedButton(
-              child: Text('True False Quiz'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/truefalse_page');
-              },
-            ),
-            RaisedButton(
-              child: Text('One Answer Quiz'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/oneanswer_page');
-              },
-            ),
-          ],
+        child: Container(
+          width: 500,
+          height: 200,
+          child: ListView(
+            padding: const EdgeInsets.all(8),
+            children: <Widget>[
+              RaisedButton(
+                child: Text('True False Quiz'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/truefalse_page');
+                },
+              ),
+              RaisedButton(
+                child: Text('One Answer Quiz'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/oneanswer_page');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
