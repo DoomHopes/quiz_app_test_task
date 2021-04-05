@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App',
       theme: ThemeData.dark(),
+      routes: {},
       home: HomePage(),
     );
   }
