@@ -8,7 +8,7 @@ class TrueFalseProvider extends ChangeNotifier {
   List<TrueFalseQuizModel> workList = [];
   final String _url = 'https://demo0586388.mockable.io/truefalse';
 
-  Future<void> getData() async {
+  void getData() async {
     workList = await getDataFromJson();
     notifyListeners();
   }
