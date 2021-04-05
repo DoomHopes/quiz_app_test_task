@@ -42,48 +42,54 @@ class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
                     child: Text('Loading ....'),
                   )
                 : _index < providerData.workList.length
-                    ? Column(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              providerData.workList[_index].question,
-                              style: TextStyle(fontSize: 25),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    ? Center(
+                        child: Container(
+                          height: 200,
+                          width: 500,
+                          child: Column(
                             children: <Widget>[
-                              RaisedButton(
-                                child: Text('True'),
-                                onPressed: () {
-                                  _checkAnswer(
-                                      true,
-                                      providerData
-                                          .workList[_index].rightAnswer);
-                                  setState(() {
-                                    _index++;
-                                  });
-                                },
+                              Text(
+                                providerData.workList[_index].question,
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.center,
                               ),
-                              SizedBox(
-                                height: 10,
-                                width: 10,
-                              ),
-                              RaisedButton(
-                                child: Text('False'),
-                                onPressed: () {
-                                  _checkAnswer(
-                                      false,
-                                      providerData
-                                          .workList[_index].rightAnswer);
-                                  setState(() {
-                                    _index++;
-                                  });
-                                },
-                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    child: Text('True'),
+                                    onPressed: () {
+                                      _checkAnswer(
+                                          true,
+                                          providerData
+                                              .workList[_index].rightAnswer);
+                                      setState(() {
+                                        _index++;
+                                      });
+                                    },
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                    width: 10,
+                                  ),
+                                  RaisedButton(
+                                    child: Text('False'),
+                                    onPressed: () {
+                                      _checkAnswer(
+                                          false,
+                                          providerData
+                                              .workList[_index].rightAnswer);
+                                      setState(() {
+                                        _index++;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       )
                     : ResultPage(_score)),
       ),
