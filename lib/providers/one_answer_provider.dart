@@ -8,7 +8,12 @@ class OneAnswerProvider extends ChangeNotifier {
   List<OneAnswerQuizModel> workList = [];
   String url = 'https://demo0586388.mockable.io/oneanswer';
 
-  Future<List<OneAnswerQuizModel>> getData() async {
+  void getData() async {
+    workList = await getDataFromJson();
+    notifyListeners();
+  }
+
+  Future<List<OneAnswerQuizModel>> getDataFromJson() async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
