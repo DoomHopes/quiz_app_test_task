@@ -9,7 +9,8 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Some results ' + _score.toString()),
+      child:
+          Text('As a result of passing the quiz, you received $_score points'),
     );
   }
 }
