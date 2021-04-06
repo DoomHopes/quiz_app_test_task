@@ -61,7 +61,7 @@ class _OneAnswerQuizPageState extends State<OneAnswerQuizPage> {
                                 itemCount: providerData
                                     .workList[_index].answers.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return RaisedButton(
+                                  return ElevatedButton(
                                     child: Text(providerData
                                         .workList[_index].answers[index]),
                                     onPressed: () {

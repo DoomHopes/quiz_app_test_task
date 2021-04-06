@@ -35,63 +35,63 @@ class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
       ),
       body: Consumer<TrueFalseProvider>(
         builder: (context, providerData, child) => Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            alignment: Alignment.bottomCenter,
-            child: providerData.workList.isEmpty
-                ? Center(
-                    child: Text('Loading ....'),
-                  )
-                : _index < providerData.workList.length
-                    ? Center(
-                        child: Container(
-                          height: 200,
-                          width: 500,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                providerData.workList[_index].question,
-                                style: TextStyle(fontSize: 20),
-                                textAlign: TextAlign.center,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  RaisedButton(
-                                    child: Text('True'),
-                                    onPressed: () {
-                                      _checkAnswer(
-                                          true,
-                                          providerData
-                                              .workList[_index].rightAnswer);
-                                      setState(() {
-                                        _index++;
-                                      });
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                    width: 10,
-                                  ),
-                                  RaisedButton(
-                                    child: Text('False'),
-                                    onPressed: () {
-                                      _checkAnswer(
-                                          false,
-                                          providerData
-                                              .workList[_index].rightAnswer);
-                                      setState(() {
-                                        _index++;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          alignment: Alignment.bottomCenter,
+          child: providerData.workList.isEmpty
+              ? Center(
+                  child: Text('Loading ....'),
+                )
+              : _index < providerData.workList.length
+                  ? Center(
+                      child: Container(
+                        height: 200,
+                        width: 500,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              providerData.workList[_index].question,
+                              style: TextStyle(fontSize: 20),
+                              textAlign: TextAlign.center,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                ElevatedButton(
+                                  child: Text('True'),
+                                  onPressed: () {
+                                    _checkAnswer(
+                                        true,
+                                        providerData
+                                            .workList[_index].rightAnswer);
+                                    setState(() {
+                                      _index++;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                  width: 10,
+                                ),
+                                ElevatedButton(
+                                  child: Text('False'),
+                                  onPressed: () {
+                                    _checkAnswer(
+                                        false,
+                                        providerData
+                                            .workList[_index].rightAnswer);
+                                    setState(() {
+                                      _index++;
+                                    });
+                                  },
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      )
-                    : ResultPage(_score)),
+                      ),
+                    )
+                  : ResultPage(_score),
+        ),
       ),
     );
   }
