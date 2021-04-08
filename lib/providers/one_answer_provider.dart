@@ -6,7 +6,16 @@ import 'package:quiz_app_test_task/models/oneanswer_model.dart';
 
 class OneAnswerProvider extends ChangeNotifier {
   List<OneAnswerQuizModel> workList = [];
-  String url = 'https://demo0586388.mockable.io/oneanswer';
+  final String _url = 'https://demo0586388.mockable.io/oneanswer';
+
+  int score;
+
+  void checkAnswer(String answer, String rightAnwer) {
+    if (answer == rightAnwer) {
+      score++;
+      notifyListeners();
+    }
+  }
 
   void getData() async {
     workList = await getDataFromJson();
@@ -14,7 +23,7 @@ class OneAnswerProvider extends ChangeNotifier {
   }
 
   Future<List<OneAnswerQuizModel>> getDataFromJson() async {
-    final response = await http.get(url);
+    final response = await http.get(_url);
 
     if (response.statusCode == 200) {
       final dynamic jsonData = json.decode(response.body);

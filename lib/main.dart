@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app_test_task/pages/one_answer.dart';
+import 'package:quiz_app_test_task/pages/one_answer_page.dart';
 import 'package:quiz_app_test_task/pages/truefalse_page.dart';
 
 import 'pages/home_page.dart';

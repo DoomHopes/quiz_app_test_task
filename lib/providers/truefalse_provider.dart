@@ -8,6 +8,15 @@ class TrueFalseProvider extends ChangeNotifier {
   List<TrueFalseQuizModel> workList = [];
   final String _url = 'https://demo0586388.mockable.io/truefalse';
 
+  int score;
+
+  void checkAnswer(bool answer, bool rightAnwer) {
+    if (answer == rightAnwer) {
+      score++;
+      notifyListeners();
+    }
+  }
+
   void getData() async {
     workList = await getDataFromJson();
     notifyListeners();

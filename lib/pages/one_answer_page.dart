@@ -11,20 +11,12 @@ class OneAnswerQuizPage extends StatefulWidget {
 
 class _OneAnswerQuizPageState extends State<OneAnswerQuizPage> {
   int _index = 0;
-  int _score = 0;
 
   @override
   void initState() {
     super.initState();
     context.read<OneAnswerProvider>().getData();
-  }
-
-  void _checkAnswer(String answer, String rightAnwer) {
-    if (answer == rightAnwer) {
-      setState(() {
-        _score++;
-      });
-    }
+    context.read<OneAnswerProvider>().score = 0;
   }
 
   @override
@@ -65,7 +57,7 @@ class _OneAnswerQuizPageState extends State<OneAnswerQuizPage> {
                                     child: Text(providerData
                                         .workList[_index].answers[index]),
                                     onPressed: () {
-                                      _checkAnswer(
+                                      providerData.checkAnswer(
                                           providerData
                                               .workList[_index].answers[index],
                                           providerData
@@ -82,7 +74,7 @@ class _OneAnswerQuizPageState extends State<OneAnswerQuizPage> {
                         ),
                       ),
                     )
-                  : ResultPage(_score),
+                  : ResultPage(providerData.score),
         ),
       ),
     );

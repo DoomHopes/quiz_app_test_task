@@ -11,20 +11,12 @@ class TrueFalseQuizPage extends StatefulWidget {
 
 class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
   int _index = 0;
-  int _score = 0;
 
   @override
   void initState() {
-    context.read<TrueFalseProvider>().getData();
     super.initState();
-  }
-
-  void _checkAnswer(bool answer, bool rightAnwer) {
-    if (answer == rightAnwer) {
-      setState(() {
-        _score++;
-      });
-    }
+    context.read<TrueFalseProvider>().getData();
+    context.read<TrueFalseProvider>().score = 0;
   }
 
   @override
@@ -59,7 +51,7 @@ class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
                                 ElevatedButton(
                                   child: Text('True'),
                                   onPressed: () {
-                                    _checkAnswer(
+                                    providerData.checkAnswer(
                                         true,
                                         providerData
                                             .workList[_index].rightAnswer);
@@ -75,7 +67,7 @@ class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
                                 ElevatedButton(
                                   child: Text('False'),
                                   onPressed: () {
-                                    _checkAnswer(
+                                    providerData.checkAnswer(
                                         false,
                                         providerData
                                             .workList[_index].rightAnswer);
@@ -90,7 +82,7 @@ class _TrueFalseQuizPageState extends State<TrueFalseQuizPage> {
                         ),
                       ),
                     )
-                  : ResultPage(_score),
+                  : ResultPage(providerData.score),
         ),
       ),
     );
